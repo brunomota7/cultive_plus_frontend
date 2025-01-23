@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import AboutUs from "@/components/landingpage/AboutUs";
-import ImgHeaderBg from "../../public/images/fundoHeader.svg";
+import ImgHeaderBg from "../../public/images/fundoHeader.png";
 import ImgLogo from "../../public/images/logo.png";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Service from "@/components/landingpage/Services";
+import Advantages from "@/components/landingpage/Advantages";
+import Contact from "@/components/landingpage/Contact";
 
 export default function LandingPage() {
   const itemsNavbar = [
@@ -68,6 +70,8 @@ export default function LandingPage() {
       <main className="w-full flex flex-col items-center justify-center bg-slate-100">
         <AboutUs />
         <Service />
+        <Advantages />
+        <Contact />
       </main>
     </div>
   );

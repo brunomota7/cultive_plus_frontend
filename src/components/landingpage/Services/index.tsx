@@ -22,8 +22,8 @@ export default function Service() {
     }, []);
 
     return (
-        <div className="w-full p-4 flex flex-col items-center justify-center bg-[#438f55]">
-            <main className="w-4/5 h-[300px] flex flex-col items-center justify-center bg-[#0b5d43] ">
+        <div className="w-full h-[500px] p-4 flex flex-col items-center justify-center bg-[#438f55]">
+            <main className="w-4/5 h-auto py-6 flex flex-col items-center justify-center bg-[#0b5d43] rounded-2xl">
                 <h2 className="text-4xl font-extrabold text-white ml-2">Nossos Serviços</h2>
                 <section className="relative w-full flex items-center justify-center">
                     <AnimatePresence>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ImgFundoAbout from "../../../../public/images/fundoAbout.svg";
+import ImgFundoAbout from "../../../../public/images/fundoAbout.png";
 
 export default function AboutUs() {
     return (
