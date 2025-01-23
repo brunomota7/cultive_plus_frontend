@@ -3,7 +3,7 @@ import { Mail, Phone } from 'lucide-react';
 
 export default function Contact() {
     return (
-        <section className="w-full h-[650px] flex flex-col md:flex-row items-center justify-center bg-[#438f55]">
+        <section className="w-full h-[650px] flex flex-col md:flex-row items-center justify-center bg-gradient-to-b from-emerald-700 to-emerald-900" id="Contact">
             <div className="w-[600px] h-[450px] p-4 bg-emerald-900/80 flex flex-col justify-center gap-4"> {/* Infos */}
                 <div className='text-center md:text-left mb-4'>
                     <h2 className='text-3xl font-bold text-white'>Entre em contato</h2>
@@ -39,7 +39,7 @@ export default function Contact() {
                 </div>
             </div>
 
-            <div className="w-[800px] h-[600px] p-2 bg-emerald-700 flex flex-col justify-center gap-1"> {/* Form */}
+            <div className="w-[800px] h-[600px] p-2 flex flex-col justify-center gap-1 bg-emerald-800"> {/* Form */}
                 <div className='text-center md:text-left mb-2'>
                     <h2 className='text-4xl font-bold text-white'>Tire suas dúvidas</h2>
                     <p className='text-lg font-light text-emerald-200'>

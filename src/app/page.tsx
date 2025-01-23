@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import AboutUs from "@/components/landingpage/AboutUs";
 import ImgHeaderBg from "../../public/images/fundoHeader.png";
 import ImgLogo from "../../public/images/logo.png";
@@ -10,15 +9,15 @@ import Footer from "@/components/landingpage/Footer";
 
 export default function LandingPage() {
   const itemsNavbar = [
-    { label: "Home", url: "#" },
-    { label: "Sobre Nós", url: "#" },
-    { label: "Contato", url: "#" },
+    { label: "Sobre Nós", url: "#AboutUs" },
+    { label: "Serviços", url: "#Services" },
+    { label: "Contato", url: "#Contact" },
   ];
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
       {/* Header */}
-      <header className="relative w-full h-[650px] flex items-center justify-center bg-[#438f55] overflow-hidden">
+      <header className="relative w-full h-[650px] flex items-center justify-center bg-gradient-to-b from-emerald-700 to-emerald-900 overflow-hidden">
         <Image 
           src={ImgHeaderBg}
           alt="Imagem de fundo do header"
@@ -50,7 +49,7 @@ export default function LandingPage() {
             ))}
 
             <a 
-              href="#"
+              href="/auth"
               className="w-20 h-auto p-2 flex items-center justify-center text-white text-normal font-bold bg-amber-400 rounded-lg hover:bg-amber-500 duration-300 ease-in-out">
               Login
             </a>
@@ -59,9 +58,12 @@ export default function LandingPage() {
 
         {/* Cadastre-se Btn */}
         <section className="absolute bottom-20 left-64 w-44 h-12 ml-2 flex"> 
-          <Button className="w-full h-full flex items-center justify-center text-lg font-bold text-white rounded-lg shadow-xl bg-amber-400 hover:bg-amber-500 duration-300 ease-in-out">
+          <a
+            href="/auth"
+            className="w-full h-full flex items-center justify-center text-lg font-bold text-white rounded-lg shadow-xl bg-amber-400 hover:bg-amber-500 duration-300 ease-in-out"
+          >
             Cadastre-se
-          </Button>
+          </a>
         </section>
       </header>
 

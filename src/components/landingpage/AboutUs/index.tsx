@@ -3,7 +3,7 @@ import ImgFundoAbout from "../../../../public/images/fundoAbout.png";
 
 export default function AboutUs() {
     return (
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col" id="AboutUs">
             <main className="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
                 <Image 
                     src={ImgFundoAbout}
