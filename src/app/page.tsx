@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import AboutUs from "@/components/landingpage/AboutUs";
 import ImgHeaderBg from "../../public/images/fundoHeader.png";
 import ImgLogo from "../../public/images/logo.png";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Service from "@/components/landingpage/Services";
 import Advantages from "@/components/landingpage/Advantages";
 import Contact from "@/components/landingpage/Contact";
+import Footer from "@/components/landingpage/Footer";
 
 export default function LandingPage() {
   const itemsNavbar = [
@@ -30,14 +30,12 @@ export default function LandingPage() {
           <a
             href="#"
             className="flex items-center"> {/* Logo Image */}
-            <AspectRatio ratio={16 / 9}>
               <Image 
                 src={ImgLogo}
                 alt="Logo Cultive+"
                 width={40}
                 height={40}
               />
-            </AspectRatio>
             <h2 className="ml-2 flex items-center font-extrabold text-xl text-white">Cultive<span className="font-extrabold text-green-500">+</span></h2>
           </a>
 
@@ -72,6 +70,7 @@ export default function LandingPage() {
         <Service />
         <Advantages />
         <Contact />
+        <Footer />
       </main>
     </div>
   );
