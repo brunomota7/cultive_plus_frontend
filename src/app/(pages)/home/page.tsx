@@ -1,12 +1,12 @@
 "use client";
-import Dashboard from "@/components/home/Dashboard";
-import Profile from "@/components/home/Profile";
-import Sales from "@/components/home/Sales";
-import Setting from "@/components/home/Setting";
+import Dashboard from "@/app/(pages)/home/(pages home)/Dashboard";
+import Profile from "@/app/(pages)/home/(pages home)/Profile";
+import Sales from "@/app/(pages)/home/(pages home)/Sales";
+import Setting from "@/app/(pages)/home/(pages home)/Setting";
 import { useState } from "react";
 import { motion } from "motion/react";
 import { LogIn, BadgeDollarSign, Settings, LayoutDashboard, User, X, Menu, MessageCircleMore } from 'lucide-react';
-import Chat from "@/components/home/Chat";
+import Chat from "@/app/(pages)/home/(pages home)/Chat";
 
 export default function Home() {
     const [isOpen, setIsOpen] = useState(false);
