@@ -1,29 +1,18 @@
 "use client";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { X, Menu } from "lucide-react";
 import Dashboard from "@/app/(pages)/home/(pages home)/Dashboard";
 import Profile from "@/app/(pages)/home/(pages home)/Profile";
 import Sales from "@/app/(pages)/home/(pages home)/Sales";
 import Setting from "@/app/(pages)/home/(pages home)/Setting";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  LogIn,
-  BadgeDollarSign,
-  Settings,
-  LayoutDashboard,
-  User,
-  X,
-  Menu,
-  MessageCircleMore,
-} from "lucide-react";
 import Chat from "@/app/(pages)/home/(pages home)/Chat";
 import "../../../styles/scrollbar.css";
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
   const [activeContent, setActiveContent] = useState("Painel");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleSidebar = () => setIsOpen(!isOpen);
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const renderContent = () => {
@@ -44,124 +33,65 @@ export default function Home() {
   };
 
   return (
-    <div className="flex bg-gray-100">
-      {/* Sidebar */}
-      {isOpen && (
-        <motion.aside
-          initial={{ x: isOpen ? 0 : -200 }}
-          animate={{ x: isOpen ? 0 : -200 }}
-          transition={{ type: "spring", stiffness: 70, damping: 20 }}
-          className="hidden lg:block fixed top-0 left-0 h-screen bg-emerald-800 text-white w-64 z-20"
-        >
-          <div className="flex justify-between items-center p-4 border-emerald-700">
-            <h2 className="ml-1 text-xl font-bold">
-              Cultive<span className="font-extrabold text-green-500">+</span>
-            </h2>
-            <button onClick={toggleSidebar} className="text-white">
-              <X />
-            </button>
-          </div>
-          <nav className="flex flex-col p-4 space-y-4">
-            {[
-              { label: "Painel", icon: <LayoutDashboard /> },
-              { label: "Perfil", icon: <User /> },
-              { label: "Vendas", icon: <BadgeDollarSign /> },
-              { label: "Chat", icon: <MessageCircleMore /> },
-              { label: "Configurações", icon: <Settings /> },
-            ].map(({ label, icon }) => (
-              <button
-                key={label}
-                onClick={() => setActiveContent(label)}
-                className="flex items-center space-x-3 hover:bg-emerald-700 rounded-md p-2 text-left"
-              >
-                {icon}
-                <span className="font-normal text-xl">{label}</span>
-              </button>
-            ))}
-            <button
-              onClick={toggleSidebar}
-              className="flex items-center space-x-3 hover:bg-emerald-700 rounded-md p-2"
-            >
-              <LogIn />
-              <span className="font-normal text-xl">Sair</span>
-            </button>
-          </nav>
-        </motion.aside>
-      )}
-
-      {/* Menu Mobile */}
-      <header className="lg:hidden bg-emerald-800 text-white w-full flex justify-between items-center p-4 z-10">
-        <h2 className="ml-1 text-xl font-bold">
-          Cultive<span className="font-extrabold text-green-500">+</span>
+    <div className="flex flex-col min-h-screen bg-gray-100">
+      {/* Header */}
+      <header className="fixed top-0 left-0 w-full h-16 bg-gradient-to-r from-emerald-700 to-green-500 text-white shadow-md flex justify-between items-center px-6 z-50">
+        <h2 className="text-3xl font-extrabold">
+          Cultive<span className="text-yellow-300">+</span>
         </h2>
-        <button onClick={toggleMenu} className="text-white">
+        <nav className="hidden lg:flex gap-6 text-lg font-semibold">
+          {["Painel", "Perfil", "Vendas", "Chat", "Configurações"].map((label) => (
+            <button
+              key={label}
+              onClick={() => setActiveContent(label)}
+              className="hover:text-yellow-300 transition-colors"
+            >
+              {label}
+            </button>
+          ))}
+        </nav>
+        <button className="lg:hidden text-white" onClick={toggleMenu}>
           {menuOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </header>
+
+      {/* Menu Mobile */}
       {menuOpen && (
         <motion.nav
-          initial={{ x: -300 }}
+          initial={{ x: 300 }}
           animate={{ x: 0 }}
-          exit={{ x: -300 }}
-          transition={{ duration: 0.4 }}
-          className="lg:hidden fixed inset-y-0 left-0 w-64 bg-emerald-800 text-white z-30"
+          exit={{ x: 300 }}
+          transition={{ duration: 0.6 }}
+          className="lg:hidden fixed top-2 right-2 w-64 h-80 bg-white/90 backdrop-blur-md shadow-lg z-50 p-6 flex flex-col space-y-6 rounded-md"
         >
-          <div className="p-4">
+          <button onClick={toggleMenu} className="absolute top-4 right-4">
+            <X size={28} className="text-emerald-800" />
+          </button>
+          {["Painel", "Perfil", "Vendas", "Chat", "Configurações"].map((label) => (
             <button
-              onClick={toggleMenu}
-              className="text-white absolute top-4 right-4"
+              key={label}
+              onClick={() => {
+                setActiveContent(label);
+                setMenuOpen(false);
+              }}
+              className="text-xl font-medium hover:text-emerald-600 transition-colors"
             >
-              <X />
+              {label}
             </button>
-            <h2 className="text-xl font-bold mb-6">
-              Cultive<span className="font-extrabold text-green-500">+</span>
-            </h2>
-            <nav className="flex flex-col space-y-4">
-              {[
-                { label: "Painel" },
-                { label: "Perfil" },
-                { label: "Vendas" },
-                { label: "Chat" },
-                { label: "Configurações" },
-              ].map(({ label }) => (
-                <button
-                  key={label}
-                  onClick={() => {
-                    setActiveContent(label);
-                    setMenuOpen(false);
-                  }}
-                  className="flex items-center space-x-3 hover:bg-emerald-700 rounded-md p-2"
-                >
-                  <span className="font-normal text-lg">{label}</span>
-                </button>
-              ))}
-            </nav>
-          </div>
+          ))}
         </motion.nav>
       )}
 
       {/* Conteúdo principal */}
       <motion.div
-        className={`flex flex-1 ${isOpen ? "ml-64" : "w-full"} transition-all duration-300 ease-in-out`}
+        key={activeContent}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className="mt-16 h-[calc(100vh-4rem)] w-full bg-gray-50 overflow-auto scrollbar"
       >
-        {!isOpen && (
-          <button
-            onClick={toggleSidebar}
-            className="fixed top-4 left-4 p-2 bg-emerald-700 text-white rounded-md focus:outline-none"
-          >
-            <Menu />
-          </button>
-        )}
-        <motion.div
-          key={activeContent}
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.8 }}
-          className="w-full min-h-screen p-4 pt-4 bg-gray-100 scrollbar"
-        >
-          {renderContent()}
-        </motion.div>
+        {renderContent()}
       </motion.div>
     </div>
   );
