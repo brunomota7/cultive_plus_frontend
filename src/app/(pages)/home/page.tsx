@@ -35,11 +35,16 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full h-16 bg-gradient-to-r from-emerald-700 to-green-500 text-white shadow-md flex justify-between items-center px-6 z-50">
-        <h2 className="text-3xl font-extrabold">
-          Cultive<span className="text-yellow-300">+</span>
+      <motion.header 
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="fixed top-0 left-0 w-full h-16 bg-gradient-to-r from-emerald-700 to-green-500 text-white shadow-md flex justify-between items-center px-6 z-50"
+      >
+        <h2 className="text-3xl font-bold">
+          Cultive<span className="font-extrabold text-yellow-300">+</span>
         </h2>
-        <nav className="hidden lg:flex gap-6 text-lg font-semibold">
+        <nav className="hidden lg:flex gap-6 text-lg font-light">
           {["Painel", "Perfil", "Vendas", "Chat", "Configurações"].map((label) => (
             <button
               key={label}
@@ -53,7 +58,7 @@ export default function Home() {
         <button className="lg:hidden text-white" onClick={toggleMenu}>
           {menuOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
-      </header>
+      </motion.header>
 
       {/* Menu Mobile */}
       {menuOpen && (
@@ -74,7 +79,7 @@ export default function Home() {
                 setActiveContent(label);
                 setMenuOpen(false);
               }}
-              className="text-xl font-medium hover:text-emerald-600 transition-colors"
+              className="text-xl font-light hover:text-emerald-600 transition-colors"
             >
               {label}
             </button>
